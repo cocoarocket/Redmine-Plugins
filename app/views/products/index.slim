@@ -1,0 +1,84 @@
+div class="contextual"
+  a class="icon icon-add new-issue" href="/issues/new"New issue
+  span class="drdn"
+    span class="drdn-trigger"
+      span class="icon-only icon-actions" title="Actions"Actions
+    div class="drdn-content"
+      div class="drdn-items"
+        a class="icon icon-import" href="/issues/imports/new"Import
+
+h2 Products
+
+div class="autoscroll"
+  table class="list issues odd-even sort-by-id sort-desc"
+    thead
+      tr
+        th class="checkbox hide-when-print"
+          /= check_box_tag 'check_all', '', false, :class => 'toggle-selection', :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}"
+
+        th class="id"
+          = products_link_to_sort(:id)
+        th class="name"
+          = products_link_to_sort(:name)
+        th class="price"
+          = products_link_to_sort(:price)
+        th class="number"
+          = products_link_to_sort(:count_number)
+        th class="priority"
+          = products_link_to_sort(:production_date)
+        th class="issue_id"
+          = products_link_to_sort(:issue_id)
+
+    tbody
+      - @products.each do |product|
+        tr
+          td
+            = product.id
+          td
+            = product.name
+          td
+            = product.price
+          td
+            = product.number
+          td
+            = product.production_date
+          td
+            = product.issue_id
+    /tbody
+      - grouped_issue_list(issues, query) do |issue, level, group_name, group_count, group_totals|
+      - if group_name
+        - reset_cycle
+        tr class="group open"
+          td colspan="#{query.inline_columns.size + 2}"
+            span class="expander icon icon-expended" onclick="toggleRowGroup(this);" &nbsp;
+            span class="name"
+              = group_name
+            span class="badge badge-count count"
+              = group_count
+            span class="totals"
+              = group_totals
+            = link_to_function("#{l(:button_collapse_all)}/#{l(:button_expand_all)}", "toggleAllRowGroups(this)", :class => 'toggle-all')
+
+      tr id="issue-#{issue.id}" class="hascontextmenu #{cycle('odd', 'even')} #{issue.css_classes} #{(level > 0 ? 'idnt idnt-' + level.to_s : nil)}"
+        td class="checkbox hide-when-print"
+          = check_box_tag("ids[]", issue.id, false, :id => nil)
+        - query.inline_columns.each do |column|
+          = content_tag('td', column_content(column, issue), :class => column.css_classes)
+
+        td class="buttons"
+          = link_to_context_menu
+
+      - query.block_columns.each do |column|
+        - if (text = column_content(column, issue)) && text.present?
+          tr class="#{current_cycle}"
+            td colspan="#{(query.inline_columns.size + 2)}" class="#{column.css_classes} block_column"
+              - if query.block_columns.count > 1
+                span= column.caption
+
+              = text
+
+/p
+  |Issue id:
+  = call_hook(:view_issues_show_details_bottom, :issue => @issue)
+
+

@@ -1,0 +1,16 @@
+ru:
+  id:              идентификатор
+  name:            наименование
+  price:           цена
+  issue_id:        номер задачи
+  count_number:    количество
+  production_date: дата производства
+
+  sort:
+    by:              Сортировать по
+    id:              идентификатору
+    name:            наименованию
+    price:           цене
+    issue_id:        номеру задачи
+    count_number:    количеству
+    production_date: дате производства
