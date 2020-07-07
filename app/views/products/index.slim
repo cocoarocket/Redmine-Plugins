@@ -2,7 +2,7 @@ div class="contextual"
   /a class="icon icon-add new-issue" href="/issues/new"New issue
   = link_to l("products.new"), new_product_path, class: "icon icon-add new-issue"
 
-h2 Products
+h2 = l('products.title')
 
 
 div class="autoscroll"
@@ -13,13 +13,13 @@ div class="autoscroll"
           = check_box_tag 'check_all', '', false, :class => 'toggle-selection', :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}"
 
         th class="id"
-          = products_link_to_sort(:id)
+          = products_link_to_sort(:id, "#")
         th class="name"
           = products_link_to_sort(:name)
         th class="price"
           = products_link_to_sort(:price)
         th class="number"
-          = products_link_to_sort(:count_number)
+          = products_link_to_sort(:number_count)
         th class="priority"
           = products_link_to_sort(:production_date)
         th class="issue_id"
@@ -29,13 +29,15 @@ div class="autoscroll"
       - @products.each do |product|
         tr
           td
+            = check_box_tag :product
+          td
             = product.id
           td
-            = product.name
+            = link_to product.name, product
           td
             = product.price
           td
-            = product.number
+            = product.number_count
           td
             = product.production_date
           td

@@ -6,12 +6,13 @@ en:
   name:            name
   price:           parice
   issue_id:        issue number
-  count_number:    count
+  number_count:    count
   production_date: production date
 
   products:
     new: new product
     create: create
+    title: Products
 
   sort:
     by:              Sort by
@@ -19,5 +20,5 @@ en:
     name:            name
     price:           parice
     issue_id:        issue number
-    count_number:    count
+    number_count:    count
     production_date: production date

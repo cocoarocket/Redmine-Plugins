@@ -1,8 +1,10 @@
+h3
+  = l('products.new')
+
 ruby:
-  product = Product.new
 
 
-= form_with(model: product, local: true) do |form|
+= form_for(product = Product.new, local: true, html: { is_issue_form: true }) do |form|
   - if product.errors.any?
     div id="error_explanation"
       h2
@@ -15,9 +17,25 @@ ruby:
 
   = form.hidden_field :issue_id, value: issue.id
 
-  div class="field"
-    = form.label l(:name)
-    = form.text_field :name, required: true
+  div class="box tabular"
+    div id="all_attributes"
+      p
+        = form.label l(:name)
+        span class="required" *
+        '
+        = form.text_field :name, size: "80", maxlength: "255", required: true
 
-  div class="actions"
-    = form.submit l('products.create')
+      p
+        = form.label l(:price)
+        span class="required" *
+        '
+        = form.text_field :price, size: "10", maxlength: "10", required: true
+
+      p
+        = form.label l(:number_count)
+        span class="required" *
+        '
+        = form.text_field :number_count, size: "10", maxlength: "10", required: true
+
+
+  = form.submit l('products.create')

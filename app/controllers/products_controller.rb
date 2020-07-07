@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :find_issues, only: [:edit, :update]
-  default_search_scope :issues
+  #before_action :find_issues, only: [:edit, :update]
+  #default_search_scope :issues
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :find_issue, :only => [:show, :edit, :update, :issue_tab]
+  #before_action :find_issue, :only => [:show, :edit, :update, :issue_tab]
 
   def index
 
@@ -16,6 +16,9 @@ class ProductsController < ApplicationController
 
   end
 
+  def show
+  end
+
   def new
     @product = Product.new
   end
@@ -26,14 +29,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.production_date = Date.current
 
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        if params[:is_issue_form]
+          redirect_to issue_path(@product.issue_id)
+        else
+          format.html { render :new }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -66,6 +74,6 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:side, :shadow, :light)
+    params.require(:product).permit(:name, :price, :number_count, :issue_id)
   end
 end

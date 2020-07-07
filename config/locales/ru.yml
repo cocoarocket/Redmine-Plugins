@@ -5,12 +5,13 @@ ru:
   name:            наименование
   price:           цена
   issue_id:        номер задачи
-  count_number:    количество
+  number_count:    количество
   production_date: дата производства
 
   products:
     new: новый продукт
     create: создать
+    title: Продукты
 
   sort:
     by:              Сортировать по
@@ -18,5 +19,5 @@ ru:
     name:            наименованию
     price:           цене
     issue_id:        номеру задачи
-    count_number:    количеству
+    number_count:    количеству
     production_date: дате производства
