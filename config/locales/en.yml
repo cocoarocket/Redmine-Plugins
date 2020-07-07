@@ -1,3 +1,23 @@
 # English strings go here for Rails i18n
 en:
-  # my_label: "My label"
+  plugin_name: Warehouse
+
+  id:              identifier
+  name:            name
+  price:           parice
+  issue_id:        issue number
+  count_number:    count
+  production_date: production date
+
+  products:
+    new: new product
+    create: create
+
+  sort:
+    by:              Sort by
+    id:              identifier
+    name:            name
+    price:           parice
+    issue_id:        issue number
+    count_number:    count
+    production_date: production date

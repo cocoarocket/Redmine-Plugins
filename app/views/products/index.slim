@@ -1,20 +1,16 @@
 div class="contextual"
-  a class="icon icon-add new-issue" href="/issues/new"New issue
-  span class="drdn"
-    span class="drdn-trigger"
-      span class="icon-only icon-actions" title="Actions"Actions
-    div class="drdn-content"
-      div class="drdn-items"
-        a class="icon icon-import" href="/issues/imports/new"Import
+  /a class="icon icon-add new-issue" href="/issues/new"New issue
+  = link_to l("products.new"), new_product_path, class: "icon icon-add new-issue"
 
 h2 Products
+
 
 div class="autoscroll"
   table class="list issues odd-even sort-by-id sort-desc"
     thead
       tr
         th class="checkbox hide-when-print"
-          /= check_box_tag 'check_all', '', false, :class => 'toggle-selection', :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}"
+          = check_box_tag 'check_all', '', false, :class => 'toggle-selection', :title => "#{l(:button_check_all)}/#{l(:button_uncheck_all)}"
 
         th class="id"
           = products_link_to_sort(:id)

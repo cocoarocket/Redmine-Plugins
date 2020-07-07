@@ -1,0 +1,23 @@
+ruby:
+  product = Product.new
+
+
+= form_with(model: product, local: true) do |form|
+  - if product.errors.any?
+    div id="error_explanation"
+      h2
+        = pluralize(product.errors.count, "error")
+        |prohibited this product from being saved:
+
+      ul
+        - product.errors.full_messages.each do |message|
+          li= message
+
+  = form.hidden_field :issue_id, value: issue.id
+
+  div class="field"
+    = form.label l(:name)
+    = form.text_field :name, required: true
+
+  div class="actions"
+    = form.submit l('products.create')

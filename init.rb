@@ -8,3 +8,5 @@ Redmine::Plugin.register :redmine_warehouse do
 
   menu :application_menu, :redmine_warehouse, { controller: "products", action: "index" }, caption: "Склад"
 end
+
+require "redmine_warehouse/hooks/views_issues_hook"

@@ -1,10 +1,16 @@
 ru:
+  plugin_name: Склад
+
   id:              идентификатор
   name:            наименование
   price:           цена
   issue_id:        номер задачи
   count_number:    количество
   production_date: дата производства
+
+  products:
+    new: новый продукт
+    create: создать
 
   sort:
     by:              Сортировать по

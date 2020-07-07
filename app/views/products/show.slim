@@ -1,0 +1,11 @@
+p id="notice"
+  = notice
+
+p
+  strong
+    |Side:
+  = @product.side
+
+= link_to 'Edit', edit_product_path(@product)
+'|
+= link_to 'Back', products_path
