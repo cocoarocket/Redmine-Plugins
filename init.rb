@@ -10,3 +10,4 @@ Redmine::Plugin.register :redmine_warehouse do
 end
 
 require "redmine_warehouse/hooks/views_issues_hook"
+require "redmine_warehouse/patches/add_helpers_to_issue_helper"
