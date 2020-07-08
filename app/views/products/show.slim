@@ -1,11 +1,46 @@
-p id="notice"
-  = notice
-
-p
-  strong
-    |Side:
+h2
   = @product.name
 
-= link_to 'Edit', edit_product_path(@product)
-'|
-= link_to 'Back', products_path
+div class="issue tracker-1 status-1 priority-1 priority-default details"
+  div class="gravatar-with-child"
+
+  div class="subject"
+    div
+      h3 = @product.name
+
+  p class="author"
+    = l('products.production_date')
+    '
+    strong
+      = time_ago_in_words @product.production_date
+
+  div class="attributes"
+    div class="splitcontent"
+      div class="splitcontentleft"
+        div class="status attribute"
+          div class="label"
+            = l('price')
+            |:
+          div class="value"
+            = @product.price
+        
+        div class="priority attribute"
+          div class="label"
+            = l('number_count')
+            |:
+          div class="value"
+            = @product.number_count
+
+      div class="splitcontentleft"
+        div class="start-date attribute"
+          div class="label"
+            = l('issue_id')
+            |:
+          div class="value"
+            - if @product.issue_id
+              = @product.issue_id
+            - else
+              = l('products.issue_not_found')
+
+
+= render "products/contextual", product: @product

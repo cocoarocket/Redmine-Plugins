@@ -9,10 +9,18 @@ en:
   number_count:    count
   production_date: production date
 
+  any:
+    issue_not_found: no issue dependency
+
   products:
     new: new product
     create: create
     title: Products
+    delete: Remove
+    edit: Edit
+    show: Show
+    back: Back
+    remove_confirm: You sure?
 
   sort:
     by:              Sort by

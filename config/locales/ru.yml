@@ -8,10 +8,19 @@ ru:
   number_count:    количество
   production_date: дата производства
 
+  any:
+    issue_not_found: нет связаной задачи
+
   products:
     new: новый продукт
     create: создать
     title: Продукты
+    delete: Удалить
+    edit: Редактировать
+    show: Открыть
+    back: Назад
+    remove_confirm: Вы уверены, что хотите удалить данный продукт?
+    production_date: дата производства
 
   sort:
     by:              Сортировать по

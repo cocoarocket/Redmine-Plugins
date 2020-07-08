@@ -1,4 +1,4 @@
-= form_with(model: @product, local: true, url: product_path) do |form|
+= form_with(model: product, local: true, url: product_path) do |form|
   - if product.errors.any?
     div id="error_explanation"
       h2
@@ -9,7 +9,7 @@
         - product.errors.full_messages.each do |message|
           li= message
 
-  = form.hidden_field :issue_id, value: @product.issue_id
+  = form.hidden_field :issue_id, value: product.issue_id
 
   div class="box tabular"
     div id="all_attributes"

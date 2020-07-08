@@ -1,7 +1,8 @@
 h1
-  |Editing product
+  = l('products.edit')
 
 = render 'form', product: @product
 
-= link_to 'Show', @product |
-= link_to 'Back', products_path
+div class="contextual"
+  = link_to l('products.show'), @product, class: "icon icon-show"
+  = link_to l('products.back'), products_path, class: "icon icon-back"

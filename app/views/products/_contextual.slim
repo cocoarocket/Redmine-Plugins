@@ -1,0 +1,3 @@
+div class="contextual"
+  = link_to l('products.edit'), edit_product_path(product), class: "icon icon-edit"
+  = link_to l('products.delete'), product_path(product), confirm: l('products.remove_confirm'), class: "icon icon-del", method: :delete

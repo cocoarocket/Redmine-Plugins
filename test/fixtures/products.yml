@@ -1,0 +1,19 @@
+---
+product_1:
+  id: 1
+  issue_id: 1
+  name: product_001
+  price: 101
+  number_count: 22
+  production_date: <%= 3.days.ago.to_s(:db) %>
+  created_on: <%= 3.days.ago.to_s(:db) %>
+  updated_on: <%= 1.day.ago.to_s(:db) %>
+product_2:
+  id: 2
+  issue_id: 1
+  name: product_002
+  price: 202
+  number_count: 50
+  production_date: <%= 3.days.ago.to_s(:db) %>
+  created_on: <%= 3.days.ago.to_s(:db) %>
+  updated_on: <%= 1.day.ago.to_s(:db) %>
