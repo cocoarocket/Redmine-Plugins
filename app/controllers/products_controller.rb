@@ -1,15 +1,10 @@
 class ProductsController < ApplicationController
-  #before_action :find_issues, only: [:edit, :update]
-  #default_search_scope :issues
-
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  #before_action :find_issue, :only => [:show, :edit, :update, :issue_tab]
 
   def index
 
     if params[:order]
-      @option = params[:option]
-      @products = Product.order(params[:order].to_sym @option.to_sym)
+      @products = Product.order({ params[:order].to_sym => params[:option].to_sym })
     else
       @products = Product.all
     end
