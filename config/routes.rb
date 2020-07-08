@@ -3,7 +3,7 @@
 
 resources :products
 
-get "products/sort/:order", to: "products#index", as: :products_sort
+get "products/sort(/:order/:option)", to: "products#index", as: :products_sort
 #get "products", to: "products#index", as: :products_index
 
 

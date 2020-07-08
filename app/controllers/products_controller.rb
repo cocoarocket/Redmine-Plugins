@@ -2,9 +2,14 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
+    if params[:order] && params[:option]
 
-    if params[:order]
-      @products = Product.order({ params[:order].to_sym => params[:option].to_sym })
+      @sort_order = params[:order]
+
+      @sort_option = 'ASC'
+      @sort_option = 'DESC' if params[:option] == 'ASC'
+
+      @products = Product.order({ @sort_order => @sort_option })
     else
       @products = Product.all
     end

@@ -13,6 +13,10 @@ module ProductsHelper
     title = quot % l("sort.#{order}")
 
     caption = optional_cap || l(order)
-    link_to caption, products_sort_path(order), title: title.html_safe
+
+    @sort_option = 'ASC' if @sort_option.nil?
+
+    link_to caption, products_sort_path(order, @sort_option), title: title.html_safe
+
   end
 end
